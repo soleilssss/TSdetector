@@ -8,12 +8,10 @@ Our paper has been accepted by Medical Image Analysis 2025.
  
 requirements.txt
 
-推荐使用torch1.7.1以上的版本。
-
 ## Training 
 
 1、数据集的准备
-本文使用VOC格式进行训练，训练前需要自己制作好数据集，
+本文使用VOC格式进行训练，训练前需要自己制作好数据集。
 
 2、开始网络训练
 训练的参数较多，均在train.py中，大家可以在下载库后仔细看注释，其中最重要的部分依然是train.py里的classes_path。
