@@ -25,8 +25,8 @@ class YOLO(object):
         #   验证集损失较低不代表mAP较高，仅代表该权值在验证集上泛化性能较好。
         #   如果出现shape不匹配，同时要注意训练时的model_path和classes_path参数的修改
         #--------------------------------------------------------------------------#
-        "model_path"        : r'D:\肠镜课题\肠镜中找到的公开数据集\sun_dataset\YOLOX\yolox-timeimage-sim-Lstm-tada\logs\LSTM-TADACONV\ep014-loss2.760-val_loss2.925.pth',
-        "classes_path"      : r'D:\肠镜课题\肠镜中找到的公开数据集\sun_dataset\YOLOX\yolox-timeimage-sim-Lstm-tada\model_data\sun_classes.txt',
+        "model_path"        : r'D:\肠镜课题\肠镜中找到的公开数据集\sun_dataset\YOLOX\yolox-timeimage-sim-Lstm-tadaconv\logs\ep014-loss2.760-val_loss2.925.pth',
+        "classes_path"      : r'D:\肠镜课题\肠镜中找到的公开数据集\sun_dataset\YOLOX\yolox-timeimage-sim-Lstm-tadaconv\model_data\sun_classes.txt',
         #---------------------------------------------------------------------#
         #   输入图片的大小，必须为32的倍数。
         #---------------------------------------------------------------------#
@@ -406,7 +406,7 @@ class YOLO(object):
             #---------------------------------------------------------#
             #   将预测框进行堆叠，然后进行非极大抑制
             #---------------------------------------------------------#
-            results = non_max_suppression_nms(outputs, self.num_classes, self.input_shape, 
+            results = non_max_suppression_cp(outputs, self.num_classes, self.input_shape, 
                         image_shape, self.letterbox_image, conf_thres = self.confidence, nms_thres = self.nms_iou)
                                                     
             if results[0] is None: 
